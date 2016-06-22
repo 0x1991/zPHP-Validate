@@ -6,7 +6,7 @@ namespace zPHP\Validate;
 class Phone {
 
 	/**
-	 * Check number and convert to international format
+	 * Convert to international format
 	 *
 	 * @throws Exceptions\PhoneInvalid
 	 */
@@ -26,24 +26,9 @@ class Phone {
 		return $phone;
 	}
 
-	/**
-	 * @throws Exceptions\PhoneInvalid
-	 */
+	/** @throws Exceptions\PhoneInvalid */
 	static function isRus (string $phone) : bool {
 		$phone = self::toFormat($phone);
 		return (bool)preg_match('/^\+7([0-9]{10,10})$/', $phone);
-	}
-
-	/**
-	 * Clean phone number
-	 *
-	 * @todo deprecated
-	 * @throws Exceptions\PhoneInvalid
-	 */
-	static function clean (string $phone) : string {
-		$phone = preg_replace('/[^0-9\+]/', '', $phone);
-		if (!preg_match('/^(\+)?([0-9]{2,13})$/', $phone))
-			throw new Exceptions\PhoneInvalid;
-		return $phone;
 	}
 }
