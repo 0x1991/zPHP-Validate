@@ -11,18 +11,9 @@ class Phone {
 	 * @throws Exceptions\PhoneInvalid
 	 */
 	static function toFormat (string $phone) : string {
-		// Cleaning
-		$phone = preg_replace('/[^0-9]/', '', $phone);
-
-		// @todo Exception for russian numbers
-		$phone = preg_replace('/^8/', '7', $phone);
-
-		$phone = '+' . $phone;
-
-		// Checking number
+		$phone = '+' . preg_replace('/[^0-9]/', '', $phone);
 		if (!preg_match('/^\+([0-9]{1,3})([0-9]{10})$/', $phone))
 			throw new Exceptions\PhoneInvalid;
-
 		return $phone;
 	}
 
