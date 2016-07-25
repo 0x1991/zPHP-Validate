@@ -29,7 +29,7 @@ class Strings {
 	}
 
 	/** @param string[] $endingArray array('яблоко', 'яблока', 'яблок') */
-	static private function numEnding (int $number, array $strings) : string {
+	static function numEnding (int $number, array $strings) : string {
 		$numberPr = $number % 100;
 		if ($numberPr >= 11 && $numberPr <= 19)
 			$res = $strings[2];
