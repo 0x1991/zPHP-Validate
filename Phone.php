@@ -22,4 +22,18 @@ class Phone {
 		$phone = self::toFormat($phone);
 		return (bool)preg_match('/^\+7([0-9]{10,10})$/', $phone);
 	}
+
+	/**
+	 * Удаление лишних символов и проверка на валидность
+	 *
+	 * Валидным считается номер состояший как минимум из 2х цифр.
+	 * Если номер не валиден - метод вернет NULL.
+	 */
+	static function clean (string $number) : ? string {
+		$number = preg_replace('/[^0-9\+]/', '', $number);
+		if (!preg_match('/^(\+)?([0-9]{2,13})$/', $number))
+			return NULL;
+
+		return $number;
+	}
 }
