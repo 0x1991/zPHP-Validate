@@ -1,0 +1,12 @@
+{
+  "name": "zigzag-mobile/zphp-validate",
+  "version": "1.0.0",
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "zPHP\\Validate\\": ""
+    }
+  }
+}
